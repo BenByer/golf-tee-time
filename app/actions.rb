@@ -11,6 +11,14 @@ get '/time_chooser' do
   erb :time_chooser
 end
 
+get '/registration' do
+  erb :registration
+end
+
+get '/confirmation' do
+  erb :confirmation
+end
+
 post '/time_chooser' do
   @num_golfers = params[:optradio]
   @selected_date = params[:selected_date]
@@ -29,4 +37,5 @@ post '/time_chooser' do
   puts @selected_date
   erb :time_chooser
 end
+
 
