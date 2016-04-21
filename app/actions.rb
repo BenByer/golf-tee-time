@@ -12,8 +12,10 @@ get '/time_chooser' do
 end
 
 post '/time_chooser' do
-  @golfers = params[:optradio]
-  puts @golfers
+  @num_golfers = params[:optradio]
+  @selected_date = params[:selected_date]
+  puts @num_golfers
+  puts @selected_date
   erb :time_chooser
 
 end

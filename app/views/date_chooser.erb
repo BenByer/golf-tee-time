@@ -61,10 +61,10 @@
                         tomorrow.setDate(tomorrow.getDate() + 1);
                     </script>
 
-                
+                            <form role="form" action="/time_chooser" method="post">
                         
                         Date:
-                        <select>
+                        <select name="selected_date">
                             <% (1..7).each do |num| %>
                             <option><%= Date.today + num %></option>
                             <% end %>
@@ -72,7 +72,6 @@
 
                         <p>Number of golfers</p>
                         <div class="container">
-                            <form role="form" action="/time_chooser" method="post">
                                 <div class="radio">
                                     <label><input value="1" type="radio" name="optradio">1 Golfer</label>
                                 </div>
@@ -86,10 +85,8 @@
                                 </div>
                                 </div>
                             <input type="submit" value="Submit">
-                            </form>
                         </div>
-                        <span>  
-                        </span>
+                            </form>
 
 
                 </div>
