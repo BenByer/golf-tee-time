@@ -17,5 +17,5 @@ post '/time_chooser' do
   puts @num_golfers
   puts @selected_date
   erb :time_chooser
-
 end
+
