@@ -22,3 +22,24 @@ user_list = [
 user_list.each do |first_name, last_name, phone, email|
   User.create( first_name: first_name, last_name: last_name, phone: phone, email: email)
 end
+
+booking_list = [
+[1,"2016-04-26T07:00:00",4],
+[2,"2016-04-26T07:15:00",2],
+[3,"2016-04-26T07:45:00",3],
+[4,"2016-04-26T08:00:00",4],
+[5,"2016-04-26T08:30:00",1],
+[6,"2016-04-26T08:45:00",4],
+[7,"2016-04-26T09:00:00",3],
+[9,"2016-04-26T09:15:00",2],
+[10,"2016-04-26T09:45:00",4],
+[11,"2016-04-26T10:15:00",3],
+[12,"2016-04-26T10:30:00",4],
+[13,"2016-04-26T10:45:00",1],
+[14,"2016-04-26T11:00:00",4],
+[15,"2016-04-26T11:30:00",2]
+]
+
+booking_list.each do |user_id, tee_time_at, golfer_count|
+  Booking.create( user_id: user_id, tee_time_at: tee_time_at, golfer_count: golfer_count)
+end
