@@ -12,7 +12,7 @@ get '/time_chooser' do
 end
 
 post '/time_chooser' do
-
+  @golfers = params
   erb :time_chooser
 
 end
