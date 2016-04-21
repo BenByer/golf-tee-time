@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Bookings - Golf Tee Times</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    
-</head>
-
 <body>
-
     <div class="brand">Bookings</div>
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -41,13 +12,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
+                <a class="navbar-brand" href="index.html">Golf Tee</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="contact.html">Contact</a>
@@ -84,31 +55,27 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center"><< Appointments >></h2>
+                    <p>Choose a date</p>
+                    <script class="date">
+                        var tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                    </script>
 
-
-
-
-
-                    <div data-role="page" id="pageone">
-                        <div data-role="main" class="ui-content">
-                            <h2>Ordered List:</h2>
-                            <ol data-role="listview">
-                                <li><a href="#">List Item</a></li>
-                                <li><a href="#">List Item</a></li>
-                                <li><a href="#">List Item</a></li>
-                            </ol>
-                            <h2>Unordered List:</h2>
-                            <ul data-role="listview">
-                                <li><a href="#">List Item</a></li>
-                                <li><a href="#">List Item</a></li>
-                                <li><a href="#">List Item</a></li>
-                            </ul>
-                        </div>
-                    </div> 
-
-
-
+                
+                        
+                        Date:
+                        <select>
+                            <option><%= Date.today %></option>
+                            <option selected="selected"><%= Date.today + 1%></option>
+                            <option><%= Date.today + 2%></option>
+                            <option><%= Date.today + 3%></option>
+                            <option><%= Date.today + 4%></option>
+                            <option><%= Date.today + 5%></option>
+                            <option><%= Date.today + 6%></option>
+                        </select>
+                        <span>  
+                            <input type="submit" value="Submit">
+                        </span>
 
 
                 </div>
@@ -136,5 +103,3 @@
     <script src="js/bootstrap.min.js"></script>
 
 </body>
-
-</html>
