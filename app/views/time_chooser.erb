@@ -1,0 +1,118 @@
+<body>
+    <div class="brand">Golf Tee Time</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" href="index.html">Golf Tee</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Choose session time</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-md-6">
+               
+                </div>
+                <div class="col-md-6">
+                   
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <table>
+                      <p>Pick a time</p>
+                      <div id="calendar"></div>
+                      <% (7..15).each do |num| %>
+                      <tr>
+                        <td>
+                        <%= num %>:00<br>
+                        </td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                        <%= num %>:15<br>
+                        </td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                        <%= num %>:30<br>
+                        </td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                        <%= num %>:45<br>
+                        </td>
+                        <td>4</td>
+                      </tr>
+                      <% end %>
+                    </table>
+
+
+
+                        
+                      
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Okanagan Swag</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
