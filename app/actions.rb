@@ -57,7 +57,7 @@ get '/registration' do
 end
 
 post '/registration' do
-  puts "PENIS"
+  puts "post '/registration'  "
   @user = User.create(
     first_name: params[:first_name],
     last_name: params[:last_name],
@@ -70,7 +70,6 @@ post '/registration' do
 end
 
 get '/confirmation' do
-  @user 
   erb :confirmation
 end
 
