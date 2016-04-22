@@ -43,14 +43,14 @@ end
 
 # var javaScriptObject = JSON.parse(responseBodyText)
 
-get '/set_booking/' do
+get '/signin/' do
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
   @selected_date = params[:date]
   @num_golfers = params[:party]
   puts "Session date: #{session[:selected_date]}"
 
-  erb :set_booking
+  erb :signin
 end
 
 get '/registration/' do
