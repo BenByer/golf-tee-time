@@ -28,10 +28,8 @@
 
                     <p>Please confirm your information and date</p>
                     <hr>
-                    <div class="confirm"><%= @user.first_name %><br></div>
-                    <div class="confirm"><%= @user.last_name %><br></div>
-                    <div class="confirm"><%= @user.email %><br></div>
-                    <div class="confirm"> <%= @user.phone %><br></div>                  
+                    <div class="confirm"><%= session[:first_name] %><br></div>
+             
                     <button>Confirm</button>
                     
                    

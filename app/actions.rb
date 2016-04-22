@@ -46,19 +46,27 @@ end
 get '/signin/' do
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
-  @selected_date = params[:date]
-  @num_golfers = params[:party]
-  puts "Session date: #{session[:selected_date]}"
 
   erb :signin
 end
 
-get '/registration/' do
-  @selected_date = params[:date]
-  @num_golfers = params[:party]
-  puts "get params #{@selected_index}"
-  puts "get sel_date #{@selected_date}"
+get '/registration' do
+  # puts "get params #{@selected_index}"
+  # puts "get sel_date #{@selected_date}"
   erb :registration
+end
+
+post '/registration' do
+  puts "post '/registration'  "
+  @user = User.create(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    phone: params[:phone]
+    )
+  session[:first_name] = @user.first_name 
+  puts @user.first_name
+  redirect "/confirmation"
 end
 
 get '/confirmation' do
@@ -66,13 +74,15 @@ get '/confirmation' do
 end
 
 post '/confirmation' do
-  @user = User.new(
-    first_name: params[:first_name],
-    last_name: params[:last_name],
-    email: params[:email],
-    phone: params[:phone]
-    )
-  erb :confirmation
+  # session[:selected_date] = params[:date]
+  # session[:num_golfers] = params[:party]
+  user = User.where(email: params[:email]).first
+  pp user
+  if user.nil?
+    redirect "/registration" 
+  else
+    erb :confirmation
+  end
 end
 
 post '/time_chooser' do

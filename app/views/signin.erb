@@ -17,7 +17,7 @@
             <div class="box">
                 <div id="center" class="col-lg-12">
                     <hr>
-                    Booking time: <strong><%= @selected_date %></strong> for party of <strong><%= @num_golfers %></strong>
+                    Booking time: <strong><%= session[:selected_date] %></strong> for party of <strong><%= session[:num_golfers] %></strong>
                     <form method="post" action="/confirmation">
                         Email:<br>
                         <input class="confirm" type="text" name="email" required><br>
