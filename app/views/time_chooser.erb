@@ -35,8 +35,8 @@
                         <td>
 
                         <% found_booking = false                        
-                        time_string = @selected_date + " " + num.to_s + ":" + minute.to_s + ":00.00000"
                         booking_string = @selected_date + " " + num.to_s + ":" + minute.to_s
+                        time_string = booking_string + ":00.00000"
                         @times.each do |time|
                             if time.tee_time_at == time_string 
                               found_booking = true %>
