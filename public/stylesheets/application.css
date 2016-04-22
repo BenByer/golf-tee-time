@@ -18,14 +18,8 @@ table td {
   box-shadow: 3px 3px 3px black;
 }
 
-.confirm:hover {
-  box-shadow: 5px 5px 5px black;
-}
 
-.confirm:active {
-  box-shadow: 5px 5px 5px black;
-}
 
 button:active {
-  box-shadow: 2px 2px 1px;
+  box-shadow: 2px 5px 1px;
 }
