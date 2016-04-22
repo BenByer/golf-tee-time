@@ -1,6 +1,10 @@
 # Homepage (Root path)
 get '/' do
-  # session[:user_id] ||= nil 
+  session[:user_id] ||= nil 
+  session[:email] ||= nil 
+  session[:selected_date] ||= nil 
+  session[:num_golfers] ||= nil 
+
   erb :index
 end
 
@@ -40,8 +44,11 @@ end
 # var javaScriptObject = JSON.parse(responseBodyText)
 
 get '/set_booking/' do
+  session[:selected_date] = params[:date]
+  session[:num_golfers] = params[:party]
   @selected_date = params[:date]
   @num_golfers = params[:party]
+  puts "Session date: #{session[:selected_date]}"
 
   erb :set_booking
 end
