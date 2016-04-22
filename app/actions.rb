@@ -81,6 +81,10 @@ post '/confirmation' do
   if user.nil?
     redirect "/registration" 
   else
+    session[:first_name] = user.first_name
+    session[:last_name] = user.last_name
+    session[:email] = user.email
+    session[:phone] = user.phone
     erb :confirmation
   end
 end
