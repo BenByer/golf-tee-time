@@ -12,10 +12,21 @@ get '/time_chooser' do
 end
 
 get '/registration' do
+  @user = User.new
   erb :registration
 end
 
 get '/confirmation' do
+  erb :confirmation
+end
+
+post '/confirmation' do
+  @user = User.new(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    phone: params[:phone]
+    )
   erb :confirmation
 end
 

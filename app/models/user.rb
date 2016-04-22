@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   has_many :bookings
 
   validates :first_name, presence: true
