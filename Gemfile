@@ -16,3 +16,10 @@ group :development, :test do
   gem 'shotgun'
   gem 'sqlite3'
 end
+
+
+group :production do
+  gem 'pry'
+  gem 'shotgun'
+  gem 'sqlite3'
+end
