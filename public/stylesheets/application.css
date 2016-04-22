@@ -6,3 +6,26 @@ table td {
 #center {
   text-align: center;
 }
+
+.confirm {
+  border: 2px solid;
+  padding: 5px;
+  margin: auto;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 3px 3px 3px black;
+}
+
+.confirm:hover {
+  box-shadow: 5px 5px 5px black;
+}
+
+.confirm:active {
+  box-shadow: 5px 5px 5px black;
+}
+
+button:active {
+  box-shadow: 2px 2px 1px;
+}
