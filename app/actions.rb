@@ -65,8 +65,17 @@ post '/registration' do
     phone: params[:phone]
     )
   session[:first_name] = @user.first_name 
+  session[:last_name] = @user.last_name 
+  session[:email] = @user.email 
+  session[:phone] = @user.phone 
+
   puts @user.first_name
   redirect "/confirmation"
+end
+
+post '/thank_you' do
+    puts params[:bookingbutton]
+    erb :thank_you
 end
 
 get '/confirmation' do
