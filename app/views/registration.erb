@@ -29,13 +29,13 @@
                     Booking time: <%= @selected_date %> for party of <%= @num_golfers %>
                     <form method="post" action="/confirmation">
                         First name:<br>
-                        <input type="text" name="first_name" value="<%= @user.first_name %>"><br>
+                        <input type="text" name="first_name"><br>
                         Last name:<br>
-                        <input type="text" name="last_name" value="<%= @user.last_name %>"><br>
+                        <input type="text" name="last_name"><br>
                         Email:<br>
-                        <input type="text" name="email" value="<%= @user.email %>"><br>
+                        <input type="text" name="email"><br>
                         Phone number:<br>
-                        <input type="integer" name="phone" value="<%= @user.phone %>"><br>
+                        <input type="integer" name="phone"><br>
                         <input type="submit" value="Submit">
 
                     </form>
