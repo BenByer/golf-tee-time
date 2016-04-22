@@ -28,14 +28,16 @@
 
                     <p>Please confirm your information and date</p>
                     <hr>
+                    <form method="post" action="/thank_you">
                     Booking time: <strong><%= session[:selected_date] %></strong> for party of <strong><%= session[:num_golfers] %></strong>
                     <div class="confirm"><%= session[:first_name] %><br></div>
                     <div class="confirm"><%= session[:last_name] %><br></div>
                     <div class="confirm"><%= session[:email] %><br></div>
                     <div class="confirm"><%= session[:phone] %><br></div>
-             
-                    <button>Confirm</button> 
                     
+                    <button type="submit" name="bookingbutton" value="confirmbooking">Confirm Booking</button> 
+                    <button type="submit" name="bookingbutton" value="cancelbooking">Cancel Booking</button> 
+                    </form>
                    
 
 
