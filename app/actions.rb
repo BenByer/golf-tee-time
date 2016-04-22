@@ -11,8 +11,25 @@ get '/time_chooser' do
   erb :time_chooser
 end
 
-get '/registration' do
-  @user = User.new
+# get '/registration/:id' do
+#   @selected_index = params[:id]
+#   puts "get params #{@selected_index}"
+#   erb :registration
+# end
+
+# get '/registration/:id?:date' do
+#   @selected_index = params[:id]
+#   @sel_date = params[:date]
+#   puts "get params #{@selected_index}"
+#   puts "get sel_date #{@sel_date}"
+#   erb :registration
+# end
+
+get '/registration/' do
+  @selected_date = params[:date]
+  @num_golfers = params[:party]
+  puts "get params #{@selected_index}"
+  puts "get sel_date #{@selected_date}"
   erb :registration
 end
 

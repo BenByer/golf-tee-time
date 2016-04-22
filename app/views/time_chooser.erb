@@ -27,14 +27,16 @@
                     <hr>
                     <table>
                       <p>Pick a time on <%= @selected_date %> from 7:00am to 3:00pm</p>
-                        <% @times.each do |timet| 
-                             puts timet.user_id 
+                        <% @times.each do |time| 
+                             puts time.user_id 
                          end %>
                       <div id="calendar"></div>
+                      <%= count = 0 %>
                       <td>Date</td><td> Golfers Booked</td>
                       <% (7..15).each do |num| %>
                       <% (0..45).each do |minute| %>
                       <% if (minute % 15 == 0) %>
+                        <%= count += 1 %>
                         <tr>
                         <td>
                         <%= num %>:<%= if minute==0 then "00" else minute.to_s end %><br>
@@ -43,8 +45,10 @@
 
                         <%
                         found_booking = false
+                        
                         time_string = @selected_date + " " + num.to_s + ":" + minute.to_s + ":00.00000"
-                         @times.each do |time|
+                        booking_string = @selected_date + " " + num.to_s + ":" + minute.to_s
+                        @times.each do |time|
                             if time.tee_time_at == time_string 
                               found_booking = true
                               %>
@@ -53,8 +57,10 @@
                           <% end
                           end %> 
                           <% if !found_booking %>
-                          <a href="/registration/<%= @selected_date %>/<%= num %>/<%= minute %>/<%= @num_golfers %>"> Book This Time</a>
-                          <% end %> 
+                           
+                          <a href="/registration/?date=<%= booking_string %>&party=<%= @num_golfers %>"> Book This Time</a>
+                   
+                         <% end %> 
                           </td>
                       <% end  #15minut modulus %>
                       <% end  #do each minute %>
