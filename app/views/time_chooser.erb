@@ -34,22 +34,22 @@
                         <td>
 
                         <% found_booking = false                        
-                        time_string = @selected_date + " " + num.to_s + ":" + minute.to_s + ":00.00000"
+                        time_string = @selected_date + " " + num.to_s + ":" + minute.to_s + ":00"
                         booking_string = @selected_date + " " + num.to_s + ":" + minute.to_s
                         @times.each do |time|
-                            if time.tee_time_at == time_string 
+                            if time.tee_time_at == time_string
                               found_booking = true %>
                             
                             <%= time.golfer_count %>
                           <% end
-                          end %> 
+                          end %>
                         <% if !found_booking %>
                            
                         <a href="/signin/?date=<%= booking_string %>&party=<%= @num_golfers %>" class="timebutton"> Book</a>
                    
                           <% end %> 
                         </td>
-                      <% end  #15minut modulus %>
+                      <% end  #15 minute modulus %>
                       <% end  #do each minute %>
                       
                       </tr>
