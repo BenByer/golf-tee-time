@@ -46,7 +46,9 @@ end
 get '/signin/' do
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
-
+  time = session[:selected_date].split
+  puts time[0]
+  puts time[1]
   erb :signin
 end
 
@@ -57,7 +59,6 @@ get '/registration' do
 end
 
 post '/registration' do
-  puts "post '/registration'  "
   @user = User.create(
     first_name: params[:first_name],
     last_name: params[:last_name],
@@ -74,8 +75,25 @@ post '/registration' do
 end
 
 post '/thank_you' do
+  booking =  params[:bookingbutton]
+  puts session[:selected_date]
+  if booking == 'confirmbooking'
+    user = User.where(email: session[:email]).first
+    @booked = Booking.create(
+      user_id: user,
+      tee_time_at: session[:selected_date],
+      golfer_count: session[:num_golfers]
+    )
+
+  end
+    
+    # t.datetime "tee_time_at"
+    # t.integer  "golfer_count"
+
+
+  #end
     puts params[:bookingbutton]
-    erb :thank_you
+  erb :thank_you
 end
 
 get '/confirmation' do
