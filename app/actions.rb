@@ -46,16 +46,13 @@ end
 get '/signin/' do
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
-  @selected_date = params[:date]
-  @num_golfers = params[:party]
-  puts "Session date: #{session[:selected_date]}"
 
   erb :signin
 end
 
 get '/registration/' do
-  @selected_date = params[:date]
-  @num_golfers = params[:party]
+ session[:selected_date] = params[:date]
+  session[:num_golfers] = params[:party]
   puts "get params #{@selected_index}"
   puts "get sel_date #{@selected_date}"
   erb :registration
@@ -66,12 +63,14 @@ get '/confirmation' do
 end
 
 post '/confirmation' do
-  @user = User.new(
-    first_name: params[:first_name],
-    last_name: params[:last_name],
-    email: params[:email],
-    phone: params[:phone]
-    )
+  @user = User.where(email: params[:email]).first
+  pp @user
+  # @user = User.new(
+  #   first_name: params[:first_name],
+  #   last_name: params[:last_name],
+  #   email: params[:email],
+  #   phone: params[:phone]
+  #   )
   erb :confirmation
 end
 
