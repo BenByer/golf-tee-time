@@ -1,5 +1,6 @@
 # Homepage (Root path)
 get '/' do
+  # session[:user_id] ||= nil 
   erb :index
 end
 
@@ -24,6 +25,26 @@ end
 #   puts "get sel_date #{@sel_date}"
 #   erb :registration
 # end
+
+# require 'sinatra'
+# require 'json'
+
+# get '/something' do
+#   @some = User.all
+
+#   content_type :json
+#   @user.to_json
+
+# end
+
+# var javaScriptObject = JSON.parse(responseBodyText)
+
+get '/set_booking/' do
+  @selected_date = params[:date]
+  @num_golfers = params[:party]
+
+  erb :set_booking
+end
 
 get '/registration/' do
   @selected_date = params[:date]
