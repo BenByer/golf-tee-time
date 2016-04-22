@@ -27,36 +27,40 @@
                     <hr>
                     <table>
                       <p>Pick a time on <%= @selected_date %> from 7:00am to 3:00pm</p>
-                        <%= @times.each do |timet| 
+                        <% @times.each do |timet| 
                              puts timet.user_id 
                          end %>
                       <div id="calendar"></div>
-                      <td>Date</td><td> Open spots</td>
+                      <td>Date</td><td> Golfers Booked</td>
                       <% (7..15).each do |num| %>
-                      <tr>
+                      <% (0..45).each do |minute| %>
+                      <% if (minute % 15 == 0) %>
+                        <tr>
                         <td>
-                        <%= num %>:00<br>
+                        <%= num %>:<%= if minute==0 then "00" else minute.to_s end %><br>
                         </td>
-                        <td></td>
-                      </tr>
-                      <tr>
                         <td>
-                        <%= num %>:15<br>
-                        </td>
-                        <td></td>
+
+                        <%
+                        found_booking = false
+                        time_string = @selected_date + " " + num.to_s + ":" + minute.to_s + ":00.00000"
+                         @times.each do |time|
+                            if time.tee_time_at == time_string 
+                              found_booking = true
+                              %>
+                            
+                            <%= time.golfer_count %>
+                          <% end
+                          end %> 
+                          <% if !found_booking %>
+                          <a href="/registration/<%= @selected_date %>/<%= num %>/<%= minute %>/<%= @num_golfers %>"> Book This Time</a>
+                          <% end %> 
+                          </td>
+                      <% end  #15minut modulus %>
+                      <% end  #do each minute %>
+                      
                       </tr>
-                      <tr>
-                        <td>
-                        <%= num %>:30<br>
-                        </td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>
-                        <%= num %>:45<br>
-                        </td>
-                        <td></td>
-                      </tr>
+                      
                       <% end %>
                     </table>
                 
