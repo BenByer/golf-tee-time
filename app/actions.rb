@@ -57,18 +57,18 @@ post '/thank_you' do
       tee_time_at: session[:selected_date],
       golfer_count: session[:num_golfers]
     )
-  
-  session.clear
-
+    session.clear
+    erb :thank_you
+ 
+  else
+    session.clear
+    redirect '/'
   end
-    
     # t.datetime "tee_time_at"
     # t.integer  "golfer_count"
 
 
   #end
-    puts params[:bookingbutton]
-  erb :thank_you
 end
 
 get '/confirmation' do
