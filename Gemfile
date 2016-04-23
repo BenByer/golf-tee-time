@@ -21,5 +21,5 @@ end
 group :production do
   gem 'pry'
   gem 'shotgun'
-  gem ‘pg’
+  gem 'pg'
 end
