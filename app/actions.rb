@@ -53,8 +53,8 @@ get '/signin/' do
 end
 
 get '/registration' do
-  # puts "get params #{@selected_index}"
-  # puts "get sel_date #{@selected_date}"
+
+  #puts "get sel_date #{@selected_date}"
   erb :registration
 end
 
@@ -106,8 +106,12 @@ post '/confirmation' do
   user = User.where(email: params[:email]).first
   pp user
   if user.nil?
+    session.clear
+    session[:email] = params[:email]
+      puts "params[:email] #{params[:email]}"
     redirect "/registration" 
   else
+      puts "session[:email] #{session[:email]}"
     session[:first_name] = user.first_name
     session[:last_name] = user.last_name
     session[:email] = user.email
