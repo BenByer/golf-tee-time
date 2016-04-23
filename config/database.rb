@@ -9,10 +9,8 @@ configure do
 
   else 
     set :database, {
-  adapter: "postgresql"
-  database: "my_database_production"
-  pool: 5
-  timeout: 5000
+  adapter: "postgresql",
+  database: "tee_it_up_database_production"
       } 
   end
 
