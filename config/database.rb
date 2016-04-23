@@ -1,13 +1,21 @@
 configure do
   # Log queries to STDOUT in development
   if Sinatra::Application.development?
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Base.logger = Logger.new(STDOUT) 
+      set :database, {
+        adapter: "sqlite3",
+        database: "db/db.sqlite3"
+      }
+
+  else 
+    set :database, {
+  adapter: "postgresql"
+  database: "my_database_production"
+  pool: 5
+  timeout: 5000
+      } 
   end
 
-  set :database, {
-    adapter: "sqlite3",
-    database: "db/db.sqlite3"
-  }
 
   # Load all models from app/models, using autoload instead of require
   # See http://www.rubyinside.com/ruby-techniques-revealed-autoload-1652.html
