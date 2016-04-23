@@ -16,33 +16,6 @@ get '/time_chooser' do
   erb :time_chooser
 end
 
-# get '/registration/:id' do
-#   @selected_index = params[:id]
-#   puts "get params #{@selected_index}"
-#   erb :registration
-# end
-
-# get '/registration/:id?:date' do
-#   @selected_index = params[:id]
-#   @sel_date = params[:date]
-#   puts "get params #{@selected_index}"
-#   puts "get sel_date #{@sel_date}"
-#   erb :registration
-# end
-
-# require 'sinatra'
-# require 'json'
-
-# get '/something' do
-#   @some = User.all
-
-#   content_type :json
-#   @user.to_json
-
-# end
-
-# var javaScriptObject = JSON.parse(responseBodyText)
-
 get '/signin/' do
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
@@ -84,6 +57,8 @@ post '/thank_you' do
       tee_time_at: session[:selected_date],
       golfer_count: session[:num_golfers]
     )
+  
+  session.clear
 
   end
     
@@ -108,6 +83,8 @@ post '/confirmation' do
   if user.nil?
     session.clear
     session[:email] = params[:email]
+    session[:selected_date] = params[:date]
+    session[:num_golfers] = params[:party]
       puts "params[:email] #{params[:email]}"
     redirect "/registration" 
   else
