@@ -8,6 +8,11 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  params[:bookagainbutton]
+  erb :index
+end
+
 get '/date_chooser' do 
   erb :date_chooser
 end
