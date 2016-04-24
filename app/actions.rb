@@ -142,7 +142,7 @@ post '/thank_you' do
   if booking == 'confirmbooking'
     user = User.where(email: session[:email]).first
     is_booked = Booking.where(user_id: user, tee_time_at: session[:selected_date], golfer_count: session[:num_golfers])
-    if !is_booked
+ #   if !is_booked
       @booked = Booking.create(
       user_id: user,
       tee_time_at: session[:selected_date],
@@ -150,7 +150,7 @@ post '/thank_you' do
     )
     puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}  is_booked #{is_booked}"
     pp session
-    end
+  #  end
     erb :thank_you
  
   else
