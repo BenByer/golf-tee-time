@@ -7,6 +7,10 @@
   font-size: 15px;
 }
 
+.container {
+  padding-left: 0px;
+}
+
 .table {
   margin: auto;
   border: 1px solid black;
