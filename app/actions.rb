@@ -107,11 +107,11 @@ post '/confirmation' do
   user = User.where(email: params[:email]).first
   pp user
   if user.nil?
-    session.clear
+  #  session.clear
     session[:email] = params[:email]
-    session[:selected_date] = params[:date]
-    session[:num_golfers] = params[:party]
-      puts "params[:email] #{params[:email]}"
+ #   session[:selected_date] = params[:date]
+ #   session[:num_golfers] = params[:party]
+      puts "params[:email] #{params[:email]} #{params[:date]} #{params[:party]}"
   puts "**** post /confirmation 2 session[:email] #{session[:email]}"
   pp session
     redirect "/registration" 
@@ -141,14 +141,16 @@ post '/thank_you' do
   puts session[:selected_date]
   if booking == 'confirmbooking'
     user = User.where(email: session[:email]).first
-    @booked = Booking.create(
+    is_booked = Booking.where(user_id: user, tee_time_at: session[:selected_date], golfer_count: session[:num_golfers])
+    if !is_booked
+      @booked = Booking.create(
       user_id: user,
       tee_time_at: session[:selected_date],
       golfer_count: session[:num_golfers]
     )
-
-  puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}"
-  pp session
+    puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}  is_booked #{is_booked}"
+    pp session
+    end
     erb :thank_you
  
   else
