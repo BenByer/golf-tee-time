@@ -1,7 +1,5 @@
 require 'active_record'
 require 'active_support/all'
-require './app/lib/booked_tee_times_importer'
-require './app/lib/golfer_importer'
 require './app/models/user'
 require './app/models/booking'
 # Add new app/ and lib/ files here when they are created.

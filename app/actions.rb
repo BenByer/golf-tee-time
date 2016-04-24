@@ -1,7 +1,8 @@
 # Homepage (Root path)
 get '/' do
+  puts "**** get '/' 1 session[:email] #{session[:email]}"
   session.clear
-  puts "**** get '/' session[:email] #{session[:email]}"
+  puts "**** get '/' 2 session[:email] #{session[:email]}"
   pp session
   session[:user_id] ||= nil 
   session[:email] ||= nil 
@@ -14,7 +15,9 @@ end
 post '/' do
   puts "**** post '/' session[:email] #{session[:email]} params[:bookagainbutton] #{params[:bookagainbutton]}"
   pp session
-  if params[:bookagainbutton] == 'bookanotherteetime'
+  session[:selected_date] = nil   
+  session[:num_golfers] = nil
+  if params[:bookagainbutton] == 'bookanotherteetime'    
     erb :date_chooser
   else
     erb :index
@@ -52,14 +55,14 @@ post '/time_chooser' do
 end
 
 get '/signin/' do
-  puts "**** get /signin 1 session[:email] #{session[:email]}"
+  puts "**** get /signin 1 params[:date] #{params[:date]}"
   pp session
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
   # time = session[:selected_date].split
   # puts time[0]
   # puts time[1]
-  puts "**** get /signin 2 session[:email] #{session[:email]}"
+  puts "**** get /signin 2 params[:date] #{params[:date]}"
   pp session
   erb :signin
 end
@@ -90,39 +93,6 @@ post '/registration' do
   pp session
   puts @user.first_name
   redirect "/confirmation"
-end
-
-get '/thank_you' do
-  puts "**** get /thank_you session[:email] #{session[:email]}"
-  pp session
-
-  erb :thank_you
-end
-
-post '/thank_you' do
-  puts "**** post /thank_you 1 session[:email] #{session[:email]}"
-  pp session
-  booking =  params[:bookingbutton]
-  puts session[:selected_date]
-  if booking == 'confirmbooking'
-    user = User.where(email: session[:email]).first
-    @booked = Booking.create(
-      user_id: user,
-      tee_time_at: session[:selected_date],
-      golfer_count: session[:num_golfers]
-    )
-    session[:selected_date] = nil
-    session[:num_golfers] = nil
-  puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}"
-  pp session
-    erb :thank_you
- 
-  else
-    session[:selected_date] = nil
-    session[:num_golfers] = nil
-  pp session
-    redirect '/'
-  end
 end
 
 get '/confirmation' do
@@ -157,3 +127,35 @@ post '/confirmation' do
   end
 end
 
+get '/thank_you' do
+  puts "**** get /thank_you session[:email] #{session[:email]}"
+  pp session
+
+  erb :thank_you
+end
+
+post '/thank_you' do
+  puts "**** post /thank_you 1 session[:email] #{session[:email]}"
+  pp session
+  booking = params[:bookingbutton]
+  puts session[:selected_date]
+  if booking == 'confirmbooking'
+    user = User.where(email: session[:email]).first
+    @booked = Booking.create(
+      user_id: user,
+      tee_time_at: session[:selected_date],
+      golfer_count: session[:num_golfers]
+    )
+
+  puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}"
+  pp session
+    erb :thank_you
+ 
+  else
+    session[:selected_date] = nil
+    session[:num_golfers] = nil
+  puts "**** post /thank_you 3 session[:email] #{session[:email]} booking #{booking}"
+  pp session
+    redirect '/'
+  end
+end
