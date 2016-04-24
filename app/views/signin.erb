@@ -20,7 +20,7 @@
                     Booking time: <strong><%= session[:selected_date] %></strong> for party of <strong><%= session[:num_golfers] %></strong>
                     <form method="post" action="/confirmation">
                         Email:<br>
-                        <input class="confirm" type="text" name="email" required><br>
+                        <input class="confirm" type="text" value="<%= session[:email] %>" name="email" required><br>
                         <input type="submit" value="Submit">
                     </form>
 
