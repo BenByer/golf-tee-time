@@ -8,10 +8,7 @@ configure do
       }
 
   else 
-    set :database, {
-  adapter: "postgresql",
-  database: "tee_it_up_database_production"
-      } 
+    set :database, ENV['DATABASE_URL']
   end
 
 
