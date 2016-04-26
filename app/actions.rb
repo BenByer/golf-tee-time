@@ -62,7 +62,7 @@ get '/signin/' do
   # puts time[0]
   # puts time[1]
   puts "**** get /signin 2 params[:date] #{params[:date]}"
-  pp session
+  #pp session
   erb :signin
 end
 
@@ -104,7 +104,7 @@ post '/confirmation' do
   puts "**** post /confirmation 1 session[:email] #{session[:email]}"
   #pp session
   user = User.where(email: params[:email]).first
-  pp user
+  #pp user
   if user.nil?
   #  session.clear
     session[:email] = params[:email]
