@@ -3,8 +3,7 @@ get '/' do
   puts "**** get '/' 1 session[:email] #{session[:email]}"
   session.clear
   puts "**** get '/' 2 session[:email] #{session[:email]}"
-  pp session
-  session[:user_id] ||= nil 
+#  session[:user_id] ||= nil 
   session[:email] ||= nil 
   session[:selected_date] ||= nil 
   session[:num_golfers] ||= nil 
@@ -14,7 +13,7 @@ end
 
 post '/' do
   puts "**** post '/' session[:email] #{session[:email]} params[:bookagainbutton] #{params[:bookagainbutton]}"
-  pp session
+  #pp session
   session[:selected_date] = nil   
   session[:num_golfers] = nil
   if params[:bookagainbutton] == 'bookanotherteetime'    
@@ -26,19 +25,19 @@ end
 
 get '/date_chooser' do 
   puts "**** get '/date_chooser' session[:email] #{session[:email]}"
-  pp session
+  #pp session
   erb :date_chooser
 end
 
 get '/time_chooser' do
   puts "**** get '/time_chooser' session[:email] #{session[:email]}"
-  pp session
+#  pp session
   erb :time_chooser
 end
 
 post '/time_chooser' do
   puts "**** post /time_chooser 1 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   @num_golfers = params[:optradio]
   @selected_date = params[:selected_date]
  
@@ -49,14 +48,14 @@ post '/time_chooser' do
   #   puts "times: #{time.tee_time_at} #{time.golfer_count}"
   # end
   puts "**** post /time_chooser 2 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   puts @selected_date
   erb :time_chooser
 end
 
 get '/signin/' do
   puts "**** get /signin 1 params[:date] #{params[:date]}"
-  pp session
+  #pp session
   session[:selected_date] = params[:date]
   session[:num_golfers] = params[:party]
   # time = session[:selected_date].split
@@ -69,7 +68,7 @@ end
 
 get '/registration' do
   puts "**** get /registration session[:email] #{session[:email]}"
-  pp session
+  #pp session
 
   #puts "get sel_date #{@selected_date}"
   erb :registration
@@ -77,7 +76,7 @@ end
 
 post '/registration' do
   puts "**** post /registration 1 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   @user = User.create(
     first_name: params[:first_name],
     last_name: params[:last_name],
@@ -90,7 +89,7 @@ post '/registration' do
   session[:phone] = @user.phone 
 
   puts "**** post /registration 2 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   puts @user.first_name
   redirect "/confirmation"
 end
@@ -103,7 +102,7 @@ post '/confirmation' do
   # session[:selected_date] = params[:date]
   # session[:num_golfers] = params[:party]
   puts "**** post /confirmation 1 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   user = User.where(email: params[:email]).first
   pp user
   if user.nil?
@@ -113,7 +112,7 @@ post '/confirmation' do
  #   session[:num_golfers] = params[:party]
       puts "params[:email] #{params[:email]} #{params[:date]} #{params[:party]}"
   puts "**** post /confirmation 2 session[:email] #{session[:email]}"
-  pp session
+  #pp session
     redirect "/registration" 
   else
       puts "session[:email] #{session[:email]}"
@@ -122,21 +121,21 @@ post '/confirmation' do
     session[:email] = user.email
     session[:phone] = user.phone
   puts "**** post /confirmation 3 session[:email] #{session[:email]}"
-  pp session
+  #pp session
     erb :confirmation
   end
 end
 
 get '/thank_you' do
   puts "**** get /thank_you session[:email] #{session[:email]}"
-  pp session
+  #pp session
 
   erb :thank_you
 end
 
 post '/thank_you' do
   puts "**** post /thank_you 1 session[:email] #{session[:email]}"
-  pp session
+  #pp session
   booking = params[:bookingbutton]
   puts session[:selected_date]
   if booking == 'confirmbooking'
@@ -149,7 +148,7 @@ post '/thank_you' do
       golfer_count: session[:num_golfers]
     )
     puts "**** post /thank_you 2 session[:email] #{session[:email]} booking #{booking}  is_booked #{is_booked}"
-    pp session
+    #pp session
   #  end
     erb :thank_you
  
@@ -157,7 +156,7 @@ post '/thank_you' do
     session[:selected_date] = nil
     session[:num_golfers] = nil
   puts "**** post /thank_you 3 session[:email] #{session[:email]} booking #{booking}"
-  pp session
+  #pp session
     redirect '/'
   end
 end
