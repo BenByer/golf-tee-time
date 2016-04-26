@@ -23,7 +23,7 @@ GEM
     json (1.8.3)
     method_source (0.8.2)
     minitest (5.8.4)
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -87,3 +87,6 @@ DEPENDENCIES
   sinatra-contrib
   sqlite3
   tux
+
+BUNDLED WITH
+   1.11.2
