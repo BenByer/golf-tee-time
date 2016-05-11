@@ -1,0 +1,68 @@
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Book a Tee Time</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-md-6">
+               
+                </div>
+                <div class="col-md-6">
+                   
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12" style="padding-left: 0px;" align="center">
+                    <hr>
+                    <p>Choose a date</p>
+                    <script class="date">
+                        var tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                    </script>
+
+                            <form role="form" action="/time_chooser" method="post">
+                        
+                        Date:
+                        <select name="selected_date">
+                            <% (1..7).each do |num| %>
+                            <option><%= Date.today + num %></option>
+                            <% end %>
+                        </select>
+
+                        <p>Number of golfers</p>
+                        <div class="container">
+                                <div class="radio">
+                                    <label><input value="1" type="radio" name="optradio">1 Golfer &nbsp</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input value="2" type="radio" name="optradio">2 Golfers</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input value="3" type="radio" name="optradio">3 Golfers</label>
+                                <div class="radio">
+                                    <label><input checked="checked" value="4" type="radio" name="optradio">4 Golfers</label>
+                                </div>
+                                </div>
+                            <input type="submit" value="Submit">
+                        </div>
+                            </form>
+
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+ 
+</body>

@@ -1,3 +1,4 @@
+require './app_config'
 require 'rake'
 require "sinatra/activerecord/rake"
 require ::File.expand_path('../config/environment', __FILE__)
@@ -14,6 +15,11 @@ end
 desc "drop the database"
 task "db:drop" do
   rm_f 'db/db.sqlite3'
+end
+
+desc 'populate the test database with data'
+task 'db:populate' do
+  AppConfig.establish_connection
 end
 
 desc 'Retrieves the current schema version number'
